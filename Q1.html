@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Four-Digit Number Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Four-Digit Number Validator</h1>
+
+    <input type="text" id="numField" maxlength="4" placeholder="Enter a 4-digit number">
+    <button id="checkBtn">Check Number</button>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("checkBtn").addEventListener("click", () => {
+            const numStr = document.getElementById("numField").value.trim();
+            const result = document.getElementById("result");
+
+            // Reset previous message
+            result.textContent = "";
+            result.style.color = "black";
+
+            // Rule 1: Must be exactly 4 digits and numeric
+            const numRegex = /^\d{4}$/;
+            if (!numRegex.test(numStr)) {
+                result.textContent = "❌ Please enter a valid four-digit number (digits only).";
+                result.style.color = "red";
+                return;
+            }
+
+            // Rule 2: First digit cannot be 0
+            if (numStr[0] === "0") {
+                result.textContent = "❌ The first digit cannot be zero.";
+                result.style.color = "red";
+                return;
+            }
+
+            // Rule 3: Digits must be in strict ascending order
+            const digits = numStr.split("").map(Number);
+            let ascending = true;
+            for (let i = 0; i < digits.length - 1; i++) {
+                if (digits[i] >= digits[i + 1]) {
+                    ascending = false;
+                    break;
+                }
+            }
+
+            if (ascending) {
+                result.textContent = `✅ Success! ${numStr} is valid (ascending order).`;
+                result.style.color = "green";
+            } else {
+                result.textContent = "❌ Digits must be in strict ascending order (e.g., 1234).";
+                result.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
