@@ -1,11 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Stranger Things — Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --card: #12172a;
+      --accent: #e50914;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #111827, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(
+        to bottom,
+        rgba(229, 9, 20, 0.15),
+        transparent
+      );
+    }
+
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+
+    header p {
+      max-width: 700px;
+      margin: 15px auto 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    .section p {
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    /* Character Cards */
+    .characters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: linear-gradient(
+        to bottom right,
+        #111827,
+        #020617
+      );
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(229,9,20,0.25);
+    }
+
+    .card h3 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .card span {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--accent);
+    }
+  </style>
 </head>
+
 <body>
-    <p>Sample  pR 5</p>
+
+  <header>
+    
+    <h1>STRANGER THINGS</h1>
+    <p>
+      A supernatural sci-fi thriller set in the small town of Hawkins, where
+      secret experiments, alternate dimensions, and extraordinary friendships
+      collide.
+    </p>
+  </header>
+
+  <main>
+    <!-- About -->
+    <section class="section">
+      <h2>About the Series</h2>
+      <p>
+        <strong>Stranger Things</strong> blends 1980s nostalgia with horror,
+        science fiction, and emotional storytelling. When a young boy
+        mysteriously disappears, a group of kids uncovers government secrets,
+        psychic abilities, and a terrifying parallel world known as the
+        <em>Upside Down</em>.
+      </p>
+    </section>
+
+    <!-- Characters -->
+    <section class="section">
+      <h2>Main Characters</h2>
+
+      <div class="characters">
+        <div class="card">
+          <h3>Eleven</h3>
+          <span>Psychokinetic Hero</span>
+          <p>
+            A girl with powerful telekinetic abilities who escapes a secret
+            laboratory and becomes the key to fighting threats from the
+            Upside Down.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Mike Wheeler</h3>
+          <span>The Leader</span>
+          <p>
+            Intelligent and loyal, Mike is the emotional core of the group,
+            driven by friendship, courage, and his bond with Eleven.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Dustin Henderson</h3>
+          <span>The Comic Mind</span>
+          <p>
+            Known for his humor and curiosity, Dustin brings heart and optimism
+            while often uncovering key scientific clues.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Lucas Sinclair</h3>
+          <span>The Realist</span>
+          <p>
+            Brave and practical, Lucas questions risks but always stands firm
+            when his friends are in danger.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Will Byers</h3>
+          <span>The Survivor</span>
+          <p>
+            His disappearance connects him deeply to the Upside Down, making
+            him sensitive to its presence and dangers.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Max Mayfield</h3>
+          <span>The Fighter</span>
+          <p>
+            Independent and fearless, Max adds strength and emotional depth,
+            confronting trauma while standing up to supernatural evil.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Inspired by <strong>Stranger Things</strong> — A tribute to friendship,
+      courage, and the unknown.
+    </p>
+  </footer>
+
 </body>
 </html>
