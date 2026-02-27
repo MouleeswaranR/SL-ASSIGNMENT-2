@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Stranger Things — Overview</title>
+  <title>Stranger Things — Interactive Overview</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -50,6 +50,17 @@
       font-size: 1.05rem;
     }
 
+    select {
+      margin-top: 20px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      background: var(--card);
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
     main {
       max-width: 1100px;
       margin: 0 auto;
@@ -72,7 +83,6 @@
       max-width: 900px;
     }
 
-    /* Character Cards */
     .characters {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -81,21 +91,22 @@
     }
 
     .card {
-      background: linear-gradient(
-        to bottom right,
-        #111827,
-        #020617
-      );
+      background: linear-gradient(to bottom right, #111827, #020617);
       border-radius: 16px;
       padding: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 18px 45px rgba(229,9,20,0.25);
+    }
+
+    .card.active {
+      border: 2px solid var(--accent);
+      box-shadow: 0 20px 50px rgba(229,9,20,0.35);
     }
 
     .card h3 {
@@ -132,98 +143,96 @@
 
 <body>
 
-  <header>
+<header>
+  <h1 id="mainTitle">STRANGER THINGS — Season 1</h1>
+  <p id="seasonDescription">
+    A supernatural sci-fi thriller set in Hawkins.
+  </p>
 
-    <h1>STRANGER THINGS---07</h1>
-    <p>
-      A supernatural sci-fi thriller set in the small town of Hawkins, where
-      secret experiments, alternate dimensions, and extraordinary friendships
-      collide.
-    </p>
-  </header>
+  <select id="seasonSelect">
+    <option value="1">Season 1</option>
+    <option value="2">Season 2</option>
+    <option value="3">Season 3</option>
+    <option value="4">Season 4</option>
+  </select>
+</header>
 
-  <main>
-    <!-- About -->
-    <section class="section">
-      <h2>About the Series</h2>
-      <p>
-        <strong>Stranger Things</strong> blends 1980s nostalgia with horror,
-        science fiction, and emotional storytelling. When a young boy
-        mysteriously disappears, a group of kids uncovers government secrets,
-        psychic abilities, and a terrifying parallel world known as the
-        <em>Upside Down</em>.
-      </p>
-    </section>
+<main>
+  <section class="section">
+    <h2>Main Characters</h2>
 
-    <!-- Characters -->
-    <section class="section">
-      <h2>Main Characters</h2>
-
-      <div class="characters">
-        <div class="card">
-          <h3>Eleven</h3>
-          <span>Psychokinetic Hero</span>
-          <p>
-            A girl with powerful telekinetic abilities who escapes a secret
-            laboratory and becomes the key to fighting threats from the
-            Upside Down.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Mike Wheeler</h3>
-          <span>The Leader</span>
-          <p>
-            Intelligent and loyal, Mike is the emotional core of the group,
-            driven by friendship, courage, and his bond with Eleven.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Dustin Henderson</h3>
-          <span>The Comic Mind</span>
-          <p>
-            Known for his humor and curiosity, Dustin brings heart and optimism
-            while often uncovering key scientific clues.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Lucas Sinclair</h3>
-          <span>The Realist</span>
-          <p>
-            Brave and practical, Lucas questions risks but always stands firm
-            when his friends are in danger.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Will Byers</h3>
-          <span>The Survivor</span>
-          <p>
-            His disappearance connects him deeply to the Upside Down, making
-            him sensitive to its presence and dangers.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Max Mayfield</h3>
-          <span>The Fighter</span>
-          <p>
-            Independent and fearless, Max adds strength and emotional depth,
-            confronting trauma while standing up to supernatural evil.
-          </p>
-        </div>
+    <div class="characters">
+      <div class="card" data-season="1">
+        <h3>Eleven</h3>
+        <span>Psychokinetic Hero</span>
+        <p>Central figure connected to the Upside Down.</p>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <p>
-      Inspired by <strong>Stranger Things</strong> — A tribute to friendship,
-      courage, and the unknown.
-    </p>
-  </footer>
+      <div class="card" data-season="2">
+        <h3>Mike Wheeler</h3>
+        <span>The Leader</span>
+        <p>Emotional anchor of the group.</p>
+      </div>
+
+      <div class="card" data-season="3">
+        <h3>Dustin Henderson</h3>
+        <span>The Comic Mind</span>
+        <p>Scientific curiosity and humor combined.</p>
+      </div>
+
+      <div class="card" data-season="4">
+        <h3>Max Mayfield</h3>
+        <span>The Fighter</span>
+        <p>Emotionally strong and fearless in Season 4.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>
+    Inspired by <strong>Stranger Things</strong> — Interactive UI Demo.
+  </p>
+</footer>
+
+<script>
+  const seasonSelect = document.getElementById("seasonSelect");
+  const mainTitle = document.getElementById("mainTitle");
+  const seasonDescription = document.getElementById("seasonDescription");
+  const cards = document.querySelectorAll(".card");
+
+  const seasonDescriptions = {
+    1: "Season 1 explores the mysterious disappearance of Will Byers.",
+    2: "Season 2 expands the threat of the Upside Down.",
+    3: "Season 3 introduces new dangers in Starcourt Mall.",
+    4: "Season 4 dives deeper into psychological horror and Vecna."
+  };
+
+  seasonSelect.addEventListener("change", function () {
+    const season = this.value;
+
+    updateTitle(season);
+    updateDescription(season);
+    highlightCharacter(season);
+  });
+
+  function updateTitle(season) {
+    mainTitle.textContent = "STRANGER THINGS — Season " + season;
+  }
+
+  function updateDescription(season) {
+    seasonDescription.textContent = seasonDescriptions[season];
+  }
+
+  function highlightCharacter(season) {
+    cards.forEach(card => {
+      card.classList.remove("active");
+      if (card.dataset.season === season) {
+        card.classList.add("active");
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
