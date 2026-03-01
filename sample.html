@@ -14,12 +14,7 @@
       --muted: #9ca3af;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", system-ui, sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", system-ui, sans-serif; }
 
     body {
       background: radial-gradient(circle at top, #111827, #020617);
@@ -30,17 +25,14 @@
     header {
       padding: 60px 20px;
       text-align: center;
-      background: linear-gradient(
-        to bottom,
-        rgba(229, 9, 20, 0.15),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(229, 9, 20, 0.15), transparent);
     }
 
     header h1 {
       font-size: 3rem;
       letter-spacing: 2px;
       color: var(--accent);
+      transition: opacity 0.4s ease;
     }
 
     header p {
@@ -48,6 +40,7 @@
       margin: 15px auto 0;
       color: var(--muted);
       font-size: 1.05rem;
+      transition: opacity 0.4s ease;
     }
 
     select {
@@ -61,15 +54,9 @@
       cursor: pointer;
     }
 
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
+    main { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
 
-    .section {
-      margin-bottom: 50px;
-    }
+    .section { margin-bottom: 50px; }
 
     .section h2 {
       font-size: 1.8rem;
@@ -78,10 +65,7 @@
       padding-left: 12px;
     }
 
-    .section p {
-      color: var(--muted);
-      max-width: 900px;
-    }
+    .section p { color: var(--muted); max-width: 900px; }
 
     .characters {
       display: grid;
@@ -96,7 +80,14 @@
       padding: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card:hover {
@@ -104,16 +95,7 @@
       box-shadow: 0 18px 45px rgba(229,9,20,0.25);
     }
 
-    .card.active {
-      border: 2px solid var(--accent);
-      box-shadow: 0 20px 50px rgba(229,9,20,0.35);
-    }
-
-    .card h3 {
-      color: #fff;
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-    }
+    .card h3 { color: #fff; margin-bottom: 8px; font-size: 1.2rem; }
 
     .card span {
       display: inline-block;
@@ -122,10 +104,7 @@
       margin-bottom: 10px;
     }
 
-    .card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
+    .card p { font-size: 0.95rem; color: var(--muted); }
 
     footer {
       text-align: center;
@@ -135,9 +114,7 @@
       font-size: 0.9rem;
     }
 
-    footer strong {
-      color: var(--accent);
-    }
+    footer strong { color: var(--accent); }
   </style>
 </head>
 
@@ -149,41 +126,68 @@
     A supernatural sci-fi thriller set in Hawkins.
   </p>
 
-  <select id="seasonSelect">
+  <select id="seasonSelect" aria-label="Select Stranger Things season">
     <option value="1">Season 1</option>
     <option value="2">Season 2</option>
     <option value="3">Season 3</option>
     <option value="4">Season 4</option>
+    <option value="5">Season 5</option>
   </select>
 </header>
 
 <main>
   <section class="section">
-    <h2>Main Characters</h2>
+    <h2>Main Characters by Season</h2>
 
     <div class="characters">
-      <div class="card" data-season="1">
+      <!-- Season 1 focused -->
+      <div class="card" data-seasons="1">
         <h3>Eleven</h3>
         <span>Psychokinetic Hero</span>
-        <p>Central figure connected to the Upside Down.</p>
+        <p>Escapes Hawkins Lab and helps find Will.</p>
       </div>
-
-      <div class="card" data-season="2">
+      <div class="card" data-seasons="1">
         <h3>Mike Wheeler</h3>
         <span>The Leader</span>
-        <p>Emotional anchor of the group.</p>
+        <p>Leads the search for his friend Will.</p>
+      </div>
+      <div class="card" data-seasons="1,2">
+        <h3>Will Byers</h3>
+        <span>The Vanished</span>
+        <p>Disappears into the Upside Down.</p>
       </div>
 
-      <div class="card" data-season="3">
+      <!-- Season 2 focused -->
+      <div class="card" data-seasons="2">
         <h3>Dustin Henderson</h3>
-        <span>The Comic Mind</span>
-        <p>Scientific curiosity and humor combined.</p>
+        <span>Curious & Funny</span>
+        <p>Adopts Dart and discovers new creatures.</p>
       </div>
 
-      <div class="card" data-season="4">
+      <!-- Season 3 focused -->
+      <div class="card" data-seasons="3">
+        <h3>Steve Harrington</h3>
+        <span>Babysitter Hero</span>
+        <p>Protects the kids from the Mind Flayer.</p>
+      </div>
+
+      <!-- Season 4 focused -->
+      <div class="card" data-seasons="4">
         <h3>Max Mayfield</h3>
         <span>The Fighter</span>
-        <p>Emotionally strong and fearless in Season 4.</p>
+        <p>Faces Vecna and survives a curse.</p>
+      </div>
+      <div class="card" data-seasons="4">
+        <h3>Eddie Munson</h3>
+        <span>Metalhead Outcast</span>
+        <p>Leads Hellfire Club and heroic sacrifice.</p>
+      </div>
+
+      <!-- Season 5 (placeholder – future focused) -->
+      <div class="card" data-seasons="5">
+        <h3>Vecna / Henry Creel</h3>
+        <span>The Villain</span>
+        <p>Final confrontation in Hawkins.</p>
       </div>
     </div>
   </section>
@@ -191,7 +195,7 @@
 
 <footer>
   <p>
-    Inspired by <strong>Stranger Things</strong> — Interactive UI Demo.
+    Inspired by <strong>Stranger Things</strong> — Interactive Season Explorer.
   </p>
 </footer>
 
@@ -201,37 +205,79 @@
   const seasonDescription = document.getElementById("seasonDescription");
   const cards = document.querySelectorAll(".card");
 
-  const seasonDescriptions = {
-    1: "Season 1 explores the mysterious disappearance of Will Byers.",
-    2: "Season 2 expands the threat of the Upside Down.",
-    3: "Season 3 introduces new dangers in Starcourt Mall.",
-    4: "Season 4 dives deeper into psychological horror and Vecna."
+  // Richer season data (based on canon highlights)
+  const seasonsData = {
+    1: {
+      title: "STRANGER THINGS — Season 1",
+      description: "The disappearance of Will Byers leads to the discovery of Eleven and the Upside Down.",
+      year: "1983"
+    },
+    2: {
+      title: "STRANGER THINGS — Season 2",
+      description: "The Mind Flayer returns. Eleven finds her past, and the kids face new threats.",
+      year: "1984"
+    },
+    3: {
+      title: "STRANGER THINGS — Season 3",
+      description: "Summer in Hawkins brings the Russian conspiracy and the Mind Flayer's possession.",
+      year: "1985"
+    },
+    4: {
+      title: "STRANGER THINGS — Season 4",
+      description: "Vecna curses victims. Eleven regains powers while the group splits across states.",
+      year: "1986"
+    },
+    5: {
+      title: "STRANGER THINGS — Season 5",
+      description: "The final battle against Vecna and the Upside Down threatens to consume Hawkins.",
+      year: "1987"
+    }
   };
 
-  seasonSelect.addEventListener("change", function () {
-    const season = this.value;
-
-    updateTitle(season);
-    updateDescription(season);
-    highlightCharacter(season);
-  });
-
-  function updateTitle(season) {
-    mainTitle.textContent = "STRANGER THINGS — Season " + season;
+  // Initialize on load
+  function init() {
+    const defaultSeason = "1";
+    seasonSelect.value = defaultSeason;
+    updateUI(defaultSeason);
+    showCardsForSeason(defaultSeason);
   }
 
-  function updateDescription(season) {
-    seasonDescription.textContent = seasonDescriptions[season];
+  function updateUI(season) {
+    const data = seasonsData[season];
+    if (!data) return;
+
+    // Fade out → update → fade in
+    mainTitle.style.opacity = "0";
+    seasonDescription.style.opacity = "0";
+
+    setTimeout(() => {
+      mainTitle.textContent = data.title;
+      seasonDescription.textContent = data.description;
+      mainTitle.style.opacity = "1";
+      seasonDescription.style.opacity = "1";
+    }, 300);
   }
 
-  function highlightCharacter(season) {
+  function showCardsForSeason(season) {
     cards.forEach(card => {
-      card.classList.remove("active");
-      if (card.dataset.season === season) {
-        card.classList.add("active");
+      const seasons = card.dataset.seasons ? card.dataset.seasons.split(",") : [];
+      if (seasons.includes(season)) {
+        card.classList.add("visible");
+      } else {
+        card.classList.remove("visible");
       }
     });
   }
+
+  // Event listener
+  seasonSelect.addEventListener("change", (e) => {
+    const season = e.target.value;
+    updateUI(season);
+    showCardsForSeason(season);
+  });
+
+  // Run on page load
+  init();
 </script>
 
 </body>
